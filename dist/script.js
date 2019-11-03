@@ -46,7 +46,6 @@ And here. | Okay. | I think we get it.
 ![React Logo w/ Text](https://goo.gl/Umyytc)
 ` };
 
-
 class MarkdownRenderer extends React.Component {
   constructor(props) {
     super(props);
@@ -60,19 +59,23 @@ class MarkdownRenderer extends React.Component {
     this.setState({ input: event.target.value }, this.updateMarkdownPreview);
   }
   updateMarkdownPreview() {
-    document.getElementById('preview').innerHTML = marked(this.state.input);
+    document.getElementById("preview").innerHTML = marked(this.state.input);
   }
 
   render() {
     return (
-      React.createElement("div", null,
-      React.createElement("textarea", { id: "editor", value: this.state.input, onChange: this.handleChanges }),
+      React.createElement("div", { class: "row justify-content-center" },
+      React.createElement("div", { class: "col-6 no-left-right-padding" },
+      React.createElement("textarea", {
+        id: "editor", class: "w-100 h-100",
+        value: this.state.input,
+        onChange: this.handleChanges })),
 
-      React.createElement("div", { id: "preview" })));
 
+      React.createElement("div", { class: "col-6", id: "preview" })));
 
 
   }}
 
 
-ReactDOM.render(React.createElement(MarkdownRenderer, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(MarkdownRenderer, null), document.getElementById("app"));

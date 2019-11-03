@@ -1,5 +1,4 @@
-
-const DEFAULT_STATE={
+const DEFAULT_STATE = {
   input: `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -46,34 +45,37 @@ And here. | Okay. | I think we get it.
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)
 `
-
 };
-class MarkdownRenderer extends React.Component{
-  constructor(props){
+class MarkdownRenderer extends React.Component {
+  constructor(props) {
     super(props);
-    this.state=DEFAULT_STATE;
-    this.handleChanges=this.handleChanges.bind(this);
+    this.state = DEFAULT_STATE;
+    this.handleChanges = this.handleChanges.bind(this);
   }
-  componentDidMount(){
+  componentDidMount() {
     this.updateMarkdownPreview();
   }
-  handleChanges(){
-    this.setState({input: event.target.value},this.updateMarkdownPreview);
+  handleChanges() {
+    this.setState({ input: event.target.value }, this.updateMarkdownPreview);
   }
-  updateMarkdownPreview(){
-      document.getElementById('preview').innerHTML =marked(this.state.input);
+  updateMarkdownPreview() {
+    document.getElementById("preview").innerHTML = marked(this.state.input);
   }
-  
-  render(){
-    return(
-      <div>
-        <textarea id="editor" value={this.state.input} onChange={this.handleChanges}>
-        </textarea>
-        <div id="preview"></div>
+
+  render() {
+    return (
+      <div class="row justify-content-center">
+        <div class="col-6 no-left-right-padding">
+          <textarea
+            id="editor" class="w-100 h-100"
+            value={this.state.input}
+            onChange={this.handleChanges}
+          />
+        </div>
+        <div class="col-6" id="preview" />
       </div>
     );
-      
   }
 }
 
-ReactDOM.render(<MarkdownRenderer/>,document.getElementById('app'));
+ReactDOM.render(<MarkdownRenderer />, document.getElementById("app"));

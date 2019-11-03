@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+html,body{
+  font-family: 'Lato', sans-serif;
+}
+#editor {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.no-left-right-padding{
+  padding-left: 0;
+  padding-right: 0;
+}
+#preview {
+  background-color: #f3f3f3;
+}
+img{
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
