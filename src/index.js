@@ -1,3 +1,9 @@
+import React, { Component } from 'react';
+import marked from 'marked';
+import { render } from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style.scss';
+
 const DEFAULT_STATE = {
   input: `# Welcome to my React Markdown Previewer!
 
@@ -56,26 +62,27 @@ class MarkdownRenderer extends React.Component {
     this.updateMarkdownPreview();
   }
   handleChanges() {
-    this.setState({ input: event.target.value }, this.updateMarkdownPreview);
+    this.setState({input: event.target.value },this.updateMarkdownPreview);
   }
   updateMarkdownPreview() {
+    
     document.getElementById("preview").innerHTML = marked(this.state.input);
   }
 
   render() {
     return (
-      <div class="row justify-content-center">
-        <div class="col-6 no-left-right-padding">
-          <textarea
-            id="editor" class="w-100 h-100"
+      <div className="row justify-content-center">
+        <div className="col-6 no-left-right-padding">
+          <textarea 
+            id="editor" className="w-100 h-100"
             value={this.state.input}
             onChange={this.handleChanges}
           />
         </div>
-        <div class="col-6" id="preview" />
+        <div className="col-6 h-100" id="preview" />
       </div>
     );
   }
 }
 
-ReactDOM.render(<MarkdownRenderer />, document.getElementById("app"));
+render(<MarkdownRenderer />, document.getElementById("app"));
